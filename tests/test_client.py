@@ -1,6 +1,7 @@
+from nadypy.models.system_information import SystemInformation
 import pytest
 
-from nadypy.api.default import get_sysinfo
+from nadypy.api.default import get_sysinfo, post_chat_web
 from nadypy.client import BasicAuthClient, SignedAuthClient
 
 
@@ -35,11 +36,15 @@ i52oubVjuTSHol1BQf4Haftbt0oBvHGUIw==
 @pytest.mark.asyncio
 async def test_basic_system_information_async(signed_auth_client):
     my_data = await get_sysinfo.asyncio(client=signed_auth_client)
+    assert isinstance(my_data, SystemInformation)
 
-    print(my_data)
+
+@pytest.mark.asyncio
+async def test_chat(signed_auth_client):
+    response = await post_chat_web.asyncio_detailed(client=signed_auth_client, json_body="hi it's me")
+    assert response.status_code == 204
 
 
 def test_basic_system_information_sync(signed_auth_client):
     my_data = get_sysinfo.sync(client=signed_auth_client)
-
-    print(my_data)
+    assert isinstance(my_data, SystemInformation)
