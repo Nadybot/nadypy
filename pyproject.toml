@@ -2,10 +2,11 @@
 name = "nadypy"
 version = "5.2.0"
 description = "A client library for accessing Nadybot API"
-authors = []
+authors = ["Jens Reidel <adrian@travitia.xyz>"]
 readme = "README.md"
 packages = [{ include = "nadypy" }]
 include = ["CHANGELOG.md", "nadypy/py.typed"]
+license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.6"
