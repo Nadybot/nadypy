@@ -4,6 +4,7 @@ from typing import Dict
 
 import attr
 from OpenSSL.crypto import FILETYPE_PEM, load_privatekey, sign
+import httpx
 
 
 @attr.s(auto_attribs=True)
@@ -14,6 +15,9 @@ class Client:
     cookies: Dict[str, str] = attr.ib(factory=dict, kw_only=True)
     headers: Dict[str, str] = attr.ib(factory=dict, kw_only=True)
     timeout: float = attr.ib(5.0, kw_only=True)
+
+    client: httpx.Client = attr.ib(factory=httpx.Client, init=False)
+    async_client: httpx.AsyncClient = attr.ib(factory=httpx.AsyncClient, init=False)
 
     def get_headers(self) -> Dict[str, str]:
         """Get headers to be used in all endpoints"""
