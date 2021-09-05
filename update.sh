@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-openapi-python-client update --path /home/jens/Nadybot/html/api.json --config /home/jens/nadypy/config.yml --custom-template-path /home/jens/nadypy/templates
+openapi-python-client update --path $HOME/Nadybot/html/api.json --config $HOME/nadypy/config.yml --custom-template-path $HOME/nadypy/templates

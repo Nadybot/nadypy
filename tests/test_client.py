@@ -1,8 +1,8 @@
-from nadypy.models.system_information import SystemInformation
 import pytest
 
 from nadypy.api.default import get_sysinfo, post_chat_web
 from nadypy.client import BasicAuthClient, SignedAuthClient
+from nadypy.models.system_information import SystemInformation
 
 
 @pytest.fixture
