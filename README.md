@@ -61,7 +61,7 @@ from typing import Optional
 
 from nadypy.models import SystemInformation
 from nadypy.api.default import get_sysinfo
-from nadybot_api_client.types import Response
+from nadypy.types import Response
 
 sysinfo: Optional[SystemInformation] = get_sysinfo.sync(client=client)
 # or if you need more info (e.g. status_code)
@@ -75,7 +75,7 @@ from typing import Optional
 
 from nadypy.models import SystemInformation
 from nadypy.api.default import get_sysinfo
-from nadybot_api_client.types import Response
+from nadypy.types import Response
 
 sysinfo: Optional[SystemInformation] = await get_sysinfo.asyncio(client=client)
 # or if you need more info (e.g. status_code)
