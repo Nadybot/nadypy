@@ -14,12 +14,10 @@ def _get_kwargs(
     url = "{}/relay-component/layer".format(client.base_url)
 
     headers: Dict[str, Any] = client.get_headers()
-    cookies: Dict[str, Any] = client.get_cookies()
 
     return {
         "url": url,
         "headers": headers,
-        "cookies": cookies,
         "timeout": client.get_timeout(),
     }
 
@@ -54,7 +52,7 @@ def sync_detailed(
         client=client,
     )
 
-    response = httpx.get(
+    response = client.client.get(
         **kwargs,
     )
 
@@ -80,8 +78,7 @@ async def asyncio_detailed(
         client=client,
     )
 
-    async with httpx.AsyncClient() as _client:
-        response = await _client.get(**kwargs)
+    response = await client.async_client.get(**kwargs)
 
     return _build_response(response=response)
 

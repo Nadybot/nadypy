@@ -3,8 +3,8 @@ from time import time_ns
 from typing import Dict
 
 import attr
-from OpenSSL.crypto import FILETYPE_PEM, load_privatekey, sign
 import httpx
+from OpenSSL.crypto import FILETYPE_PEM, load_privatekey, sign
 
 
 @attr.s(auto_attribs=True)
@@ -12,12 +12,14 @@ class Client:
     """A class for keeping track of data related to the API"""
 
     base_url: str
-    cookies: Dict[str, str] = attr.ib(factory=dict, kw_only=True)
     headers: Dict[str, str] = attr.ib(factory=dict, kw_only=True)
     timeout: float = attr.ib(5.0, kw_only=True)
 
     client: httpx.Client = attr.ib(factory=httpx.Client, init=False)
     async_client: httpx.AsyncClient = attr.ib(factory=httpx.AsyncClient, init=False)
+
+    async def close(self) -> None:
+        await self.async_client.aclose()
 
     def get_headers(self) -> Dict[str, str]:
         """Get headers to be used in all endpoints"""
@@ -26,13 +28,6 @@ class Client:
     def with_headers(self, headers: Dict[str, str]) -> "Client":
         """Get a new client matching this one with additional headers"""
         return attr.evolve(self, headers={**self.headers, **headers})
-
-    def get_cookies(self) -> Dict[str, str]:
-        return {**self.cookies}
-
-    def with_cookies(self, cookies: Dict[str, str]) -> "Client":
-        """Get a new client matching this one with additional cookies"""
-        return attr.evolve(self, cookies={**self.cookies, **cookies})
 
     def get_timeout(self) -> float:
         return self.timeout

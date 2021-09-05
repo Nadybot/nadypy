@@ -16,14 +16,12 @@ def _get_kwargs(
     url = "{}/module/{module}/settings/{setting}".format(client.base_url, module=module, setting=setting)
 
     headers: Dict[str, Any] = client.get_headers()
-    cookies: Dict[str, Any] = client.get_cookies()
 
     json_json_body = json_body
 
     return {
         "url": url,
         "headers": headers,
-        "cookies": cookies,
         "timeout": client.get_timeout(),
         "json": json_json_body,
     }
@@ -52,7 +50,7 @@ def sync_detailed(
         json_body=json_body,
     )
 
-    response = httpx.patch(
+    response = client.client.patch(
         **kwargs,
     )
 
@@ -73,7 +71,6 @@ async def asyncio_detailed(
         json_body=json_body,
     )
 
-    async with httpx.AsyncClient() as _client:
-        response = await _client.patch(**kwargs)
+    response = await client.async_client.patch(**kwargs)
 
     return _build_response(response=response)

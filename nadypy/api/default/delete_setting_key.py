@@ -14,12 +14,10 @@ def _get_kwargs(
     url = "{}/setting/{key}".format(client.base_url, key=key)
 
     headers: Dict[str, Any] = client.get_headers()
-    cookies: Dict[str, Any] = client.get_cookies()
 
     return {
         "url": url,
         "headers": headers,
-        "cookies": cookies,
         "timeout": client.get_timeout(),
     }
 
@@ -43,7 +41,7 @@ def sync_detailed(
         client=client,
     )
 
-    response = httpx.delete(
+    response = client.client.delete(
         **kwargs,
     )
 
@@ -60,7 +58,6 @@ async def asyncio_detailed(
         client=client,
     )
 
-    async with httpx.AsyncClient() as _client:
-        response = await _client.delete(**kwargs)
+    response = await client.async_client.delete(**kwargs)
 
     return _build_response(response=response)
