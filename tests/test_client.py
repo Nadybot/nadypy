@@ -1,8 +1,7 @@
 import pytest
 
 from nadypy.api.default import get_sysinfo
-from nadypy.client import BasicAuthClient, Client, SignedAuthClient
-from nadypy.models import SystemInformation
+from nadypy.client import BasicAuthClient, SignedAuthClient
 
 
 @pytest.fixture
@@ -16,7 +15,7 @@ async def basic_auth_client():
 
 @pytest.fixture
 async def signed_auth_client():
-    client = signed_auth_client = SignedAuthClient(
+    client = SignedAuthClient(
         "http://localhost:8080/api",
         "bd879e20",
         """\
