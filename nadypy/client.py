@@ -46,12 +46,12 @@ class AuthenticatedClient(Client):
 class BasicAuthClient(AuthenticatedClient):
     """A Client which has been authenticated for use on secured endpoints"""
 
-    user_name: str
+    username: str
     password: str
 
     def get_headers(self) -> Dict[str, str]:
         """Get headers to be used in authenticated endpoints"""
-        basic_auth = b64encode(f"{self.user_name}:{self.password}".encode()).decode("ascii")
+        basic_auth = b64encode(f"{self.username}:{self.password}".encode()).decode("ascii")
         return {"Authorization": f"Basic {basic_auth}", **self.headers}
 
 
