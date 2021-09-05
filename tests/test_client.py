@@ -1,7 +1,7 @@
 import pytest
 
-from nadybot_api_client.api.default import get_sysinfo
-from nadybot_api_client.client import BasicAuthClient, SignedAuthClient
+from nadypy.api.default import get_sysinfo
+from nadypy.client import BasicAuthClient, SignedAuthClient
 
 basic_auth_client = BasicAuthClient("http://localhost:8080/api", "Sachan", "8dc18f1b35caa9f31db1a48b")
 signed_auth_client = SignedAuthClient(
