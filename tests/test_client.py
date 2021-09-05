@@ -16,6 +16,7 @@ i52oubVjuTSHol1BQf4Haftbt0oBvHGUIw==
 """,
 )
 
+
 @pytest.mark.asyncio
 async def test_basic_system_information():
     my_data = await get_sysinfo.asyncio(client=signed_auth_client)

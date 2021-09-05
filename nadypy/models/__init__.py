@@ -26,6 +26,8 @@ from .relay_config import RelayConfig
 from .relay_layer import RelayLayer
 from .relay_layer_argument import RelayLayerArgument
 from .relay_status import RelayStatus
+from .route_hop_color import RouteHopColor
+from .route_hop_format import RouteHopFormat
 from .setting_option import SettingOption
 from .system_information import SystemInformation
 from .system_stats import SystemStats
