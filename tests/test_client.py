@@ -1,6 +1,7 @@
 import pytest
 
-from nadypy.api.default import get_sysinfo, post_chat_web
+from nadypy.api.system import get_sysinfo
+from nadypy.api.webserver import post_chat_web
 from nadypy.client import BasicAuthClient, SignedAuthClient
 from nadypy.models.system_information import SystemInformation
 

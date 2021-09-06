@@ -60,7 +60,7 @@ Now call your endpoint and use your models:
 from typing import Optional
 
 from nadypy.models import SystemInformation
-from nadypy.api.default import get_sysinfo
+from nadypy.api.system import get_sysinfo
 from nadypy.types import Response
 
 sysinfo: Optional[SystemInformation] = get_sysinfo.sync(client=client)
@@ -74,7 +74,7 @@ Or do the same thing with an async version:
 from typing import Optional
 
 from nadypy.models import SystemInformation
-from nadypy.api.default import get_sysinfo
+from nadypy.api.system import get_sysinfo
 from nadypy.types import Response
 
 sysinfo: Optional[SystemInformation] = await get_sysinfo.asyncio(client=client)

@@ -1,5 +1,6 @@
 """ Contains all the data models used in inputs/outputs """
 
+from .audit import Audit
 from .basic_system_information import BasicSystemInformation
 from .channel_info import ChannelInfo
 from .class_spec import ClassSpec
@@ -19,6 +20,7 @@ from .news import News
 from .online_player import OnlinePlayer
 from .online_players import OnlinePlayers
 from .operation import Operation
+from .org_history import OrgHistory
 from .player import Player
 from .proxy_capabilities import ProxyCapabilities
 from .proxy_reply import ProxyReply
