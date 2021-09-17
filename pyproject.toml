@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nadypy"
-version = "5.2.0"
+version = "5.2.1"
 description = "A client library for accessing a Nadybot's API"
 authors = ["Jens Reidel <adrian@travitia.xyz>"]
 readme = "README.md"
