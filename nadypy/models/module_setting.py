@@ -18,6 +18,7 @@ class ModuleSetting:
     options: Union[Unset, List[SettingOption]] = UNSET
     editable: Union[Unset, bool] = UNSET
     description: Union[Unset, str] = UNSET
+    help_: Union[Unset, None, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -41,6 +42,7 @@ class ModuleSetting:
 
         editable = self.editable
         description = self.description
+        help_ = self.help_
 
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
@@ -57,6 +59,8 @@ class ModuleSetting:
             field_dict["editable"] = editable
         if description is not UNSET:
             field_dict["description"] = description
+        if help_ is not UNSET:
+            field_dict["help"] = help_
 
         return field_dict
 
@@ -87,6 +91,8 @@ class ModuleSetting:
 
         description = d.pop("description", UNSET)
 
+        help_ = d.pop("help", UNSET)
+
         module_setting = cls(
             type=type,
             name=name,
@@ -94,6 +100,7 @@ class ModuleSetting:
             options=options,
             editable=editable,
             description=description,
+            help_=help_,
         )
 
         module_setting.additional_properties = d

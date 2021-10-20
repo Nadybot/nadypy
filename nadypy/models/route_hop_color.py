@@ -13,6 +13,7 @@ class RouteHopColor:
 
     hop: Union[Unset, str] = UNSET
     where: Union[Unset, None, str] = UNSET
+    via: Union[Unset, None, str] = UNSET
     tag_color: Union[Unset, None, str] = UNSET
     text_color: Union[Unset, None, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
@@ -20,6 +21,7 @@ class RouteHopColor:
     def to_dict(self) -> Dict[str, Any]:
         hop = self.hop
         where = self.where
+        via = self.via
         tag_color = self.tag_color
         text_color = self.text_color
 
@@ -30,6 +32,8 @@ class RouteHopColor:
             field_dict["hop"] = hop
         if where is not UNSET:
             field_dict["where"] = where
+        if via is not UNSET:
+            field_dict["via"] = via
         if tag_color is not UNSET:
             field_dict["tag_color"] = tag_color
         if text_color is not UNSET:
@@ -44,6 +48,8 @@ class RouteHopColor:
 
         where = d.pop("where", UNSET)
 
+        via = d.pop("via", UNSET)
+
         tag_color = d.pop("tag_color", UNSET)
 
         text_color = d.pop("text_color", UNSET)
@@ -51,6 +57,7 @@ class RouteHopColor:
         route_hop_color = cls(
             hop=hop,
             where=where,
+            via=via,
             tag_color=tag_color,
             text_color=text_color,
         )

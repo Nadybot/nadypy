@@ -13,6 +13,7 @@ class RouteHopFormat:
 
     hop: Union[Unset, str] = UNSET
     where: Union[Unset, None, str] = UNSET
+    via: Union[Unset, None, str] = UNSET
     render: Union[Unset, bool] = UNSET
     format_: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
@@ -20,6 +21,7 @@ class RouteHopFormat:
     def to_dict(self) -> Dict[str, Any]:
         hop = self.hop
         where = self.where
+        via = self.via
         render = self.render
         format_ = self.format_
 
@@ -30,6 +32,8 @@ class RouteHopFormat:
             field_dict["hop"] = hop
         if where is not UNSET:
             field_dict["where"] = where
+        if via is not UNSET:
+            field_dict["via"] = via
         if render is not UNSET:
             field_dict["render"] = render
         if format_ is not UNSET:
@@ -44,6 +48,8 @@ class RouteHopFormat:
 
         where = d.pop("where", UNSET)
 
+        via = d.pop("via", UNSET)
+
         render = d.pop("render", UNSET)
 
         format_ = d.pop("format", UNSET)
@@ -51,6 +57,7 @@ class RouteHopFormat:
         route_hop_format = cls(
             hop=hop,
             where=where,
+            via=via,
             render=render,
             format_=format_,
         )
